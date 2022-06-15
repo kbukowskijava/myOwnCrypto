@@ -25,24 +25,47 @@ class Block():
         self.number = number
 
     def hash(self):
-        return updatehash(self.previous_hash, self.number, self.data, self.nonce)
+        return updatehash(
+            self.previous_hash,
+            self.number,
+            self.data,
+            self.nonce
+        )
 
     def __str__(self):
-        return str("Block#: %s\nHash: %s\nPrevious hash: %s\nData: %s\nNonce: %s\n" % (
-        self.number, self.hash(), self.previous_hash, self.data, self.nonce))
+        return str(
+            "Block#: %s\n"
+            "Hash: %s\n"
+            "Previous hash: %s\n"
+            "Data: %s\n"
+            "Nonce: %s\n"
+            % (
+                self.number,
+                self.hash(),
+                self.previous_hash,
+                self.data,
+                self.nonce
+            )
+        )
 
 
 class Blockchain():
     # The difficulty is a measure of how difficult it is to mine a Bitcoin block
     difficulty = 4
 
-
     def __init__(self, chain=[]):
         self.chain = chain
 
-
     def add(self, block):
-        self.chain.append()
+        self.chain.append(
+            {
+                'hash': block.hash(),
+                'previous': block.previous_hash,
+                'number': block.number,
+                'data': block.data,
+                'nonce': block.nonce
+            }
+        )
 
 
 def main():
