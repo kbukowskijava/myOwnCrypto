@@ -67,6 +67,9 @@ class Blockchain():
             }
         )
 
+    def mine(self, block):
+        block.previous_hash = self.chain
+
 
 def main():
     test_block = Block("Hello!!!", 1)
